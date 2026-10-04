@@ -89,7 +89,12 @@ Test changes in the example app's "In a modal" section: open the wheel, flick it
 
 ### Publishing a release
 
-Releases are published from GitHub. Bump `version` in `package.json`, add the changes to `CHANGELOG.md`, merge to `main`, then create a GitHub release with a tag like `v0.2.0`. The release workflow builds the package and publishes it to npm with provenance. It needs an `NPM_TOKEN` secret with publish rights on the `@apolloscooters` scope.
+Releases go out from GitHub, with no npm token stored anywhere:
+
+1. Bump `version` in `package.json`, add the changes to `CHANGELOG.md`, and merge to `main`.
+2. Create a GitHub release with a tag matching the version, for example `v0.2.0`.
+3. The release workflow checks the code, builds the package and stages it on npm through trusted publishing.
+4. A maintainer approves the staged version on npmjs.com (or with `npm stage approve <id>`), confirming with their two-factor authentication. Only then does it go live.
 
 ### Sending a pull request
 

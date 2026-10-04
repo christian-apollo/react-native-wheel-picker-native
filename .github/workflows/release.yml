@@ -42,7 +42,11 @@ jobs:
           node-version-file: .nvmrc
           registry-url: https://registry.npmjs.org
 
-      - name: Publish to npm
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # Trusted publishing: npm trusts this workflow through OIDC, so no token is stored anywhere.
+      # The version is staged, not published: a maintainer approves it on npmjs.com (or with
+      # `npm stage approve <id>`) using their own two-factor authentication before it goes live.
+      - name: Install an npm that supports staged publishing
+        run: npm install --global npm@^12.2.0
+
+      - name: Stage the release on npm
+        run: npm stage publish . --access public
