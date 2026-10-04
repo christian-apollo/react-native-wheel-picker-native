@@ -1,6 +1,6 @@
 {
   "name": "@apolloscooters/react-native-wheel-picker-native",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The real iOS and Android wheel picker for React Native, built so it never reloads under a touch",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",

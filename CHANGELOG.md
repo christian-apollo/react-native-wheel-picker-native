@@ -2,6 +2,12 @@
 
 All notable changes to this package are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [semantic versioning](https://semver.org/).
 
+## [0.1.1] - 2026-10-04
+
+### Documentation
+
+- How to set up Jest: add the `@apolloscooters` scope to `transformIgnorePatterns`. No mock is needed.
+
 ## [0.1.0] - 2026-10-04
 
 ### Added

@@ -140,6 +140,22 @@ The package also exports the `WheelPickerItem`, `WheelPickerProps` and `WheelPic
 - **Changing `items`, `textColor` or `fontSize` replaces the wheel** with a freshly built one showing `selectedValue`. You can change them at any time, for example to switch units from km/h to mph, but avoid changing them on every render: create `items` with `useMemo` or outside the component.
 - **Empty `items`** shows an empty wheel and never calls `onValueChange`.
 
+## Testing with Jest
+
+The package ships modern JavaScript modules. The React Native Jest preset only transforms packages whose names start with `react-native`, so add the `@apolloscooters` scope to `transformIgnorePatterns`:
+
+```js
+// jest.config.js
+module.exports = {
+  preset: '@react-native/jest-preset', // 'react-native' on older templates
+  transformIgnorePatterns: [
+    'node_modules/(?!((jest-)?react-native|@react-native(-community)?|@apolloscooters)/)',
+  ],
+};
+```
+
+If you already have a `transformIgnorePatterns` list, add `@apolloscooters` to it. No mock is needed: the React Native preset renders native components as plain host elements, so `render(<WheelPicker … />)` works in tests and you can find it by `testID`.
+
 ## Accessibility
 
 The wheel is the platform control, so screen readers handle it the way users expect:
